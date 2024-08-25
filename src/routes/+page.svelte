@@ -8,6 +8,15 @@
 	import "@fontsource/space-mono";
 	import { Carta, MarkdownEditor } from "carta-md";
 	import DOMPurify from "isomorphic-dompurify";
+	import { onMount } from "svelte";
+
+	// mouse trailer logic
+	let mouseTrailer: HTMLDivElement;
+
+	function updateMouseTrailer(e: MouseEvent) {
+		mouseTrailer.style.left = (e.clientX - (mouseTrailer.offsetWidth / 2)) + "px";
+		mouseTrailer.style.top = (e.clientY - (mouseTrailer.offsetHeight / 2)) + "px";
+	}
 
 	let currentPrompt = "";
 
@@ -45,6 +54,7 @@
 	}
 </script>
 
+
 <div class="flex h-full w-full flex-row items-stretch p-6">
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="flex h-full flex-grow flex-col gap-6" on:keydown={handlePromptInput}>
@@ -68,6 +78,15 @@
 		/>
 	</div>
 </div>
+
+
+<!-- TODO with trailer: make it an overlay on the entire page, and move the radial gradient position -->
+ <!-- radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(255, 254, 241, 0.05), transparent 60% ) -->
+<svelte:body on:mousemove={updateMouseTrailer} />
+<div
+	bind:this={mouseTrailer}
+	class="fixed left-0 top-0 z-50 h-[32rem] w-[32rem] bg-[radial-gradient(circle_at_center,#E8EAEE10,#E8EAEE00_60%)]"
+/>
 
 <style lang="postcss">
 	:global(body),
