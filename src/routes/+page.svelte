@@ -9,8 +9,15 @@
 			<!-- <div class="flex-col w-full border-t-2"></div> -->
 			<TaskList.Root class="border-t-2">
 				<TaskList.Item value="task-1" status="working">
-					<TaskList.Trigger>
-						<span class="mgc_search_line bg-clip-text bg-red-500"></span>
+					<TaskList.Trigger status="working">
+						Task 1
+					</TaskList.Trigger>
+					<TaskList.Content>Task 1 content</TaskList.Content>
+				</TaskList.Item>
+			</TaskList.Root>
+            <TaskList.Root class="border-t-2">
+				<TaskList.Item value="task-1" status="good">
+					<TaskList.Trigger status="good">
 						Task 1
 					</TaskList.Trigger>
 					<TaskList.Content>Task 1 content</TaskList.Content>
