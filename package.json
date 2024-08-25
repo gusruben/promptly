@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/public-sans": "^5.0.18",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"tailwind-merge": "^2.5.2",
