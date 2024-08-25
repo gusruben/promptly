@@ -15,6 +15,17 @@
 		max-height: 6rem;
 		overflow: auto;
 	}
+    
+    .carta-input {
+        display: flex !important;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: stretch;
+
+        .carta-input-wrapper {
+            flex-grow: 1;
+        }
+    }
 
 	.carta-font-code {
 		font-family: "Space Mono", monospace;

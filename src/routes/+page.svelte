@@ -1,9 +1,12 @@
 <script lang="ts">
+	import SendButton from "$lib/components/SendButton.svelte";
 	import Task from "$lib/components/Task.svelte";
 	import * as TaskList from "$lib/components/ui/tasklist";
-	import { Carta, MarkdownEditor } from "carta-md";
-	import "@fontsource/space-mono";
 	import "$lib/styles/carta.scss";
+	import { code } from "@cartamd/plugin-code";
+	import "@cartamd/plugin-code/default.css";
+	import "@fontsource/space-mono";
+	import { Carta, MarkdownEditor } from "carta-md";
 	import DOMPurify from "isomorphic-dompurify";
 
 	let currentPrompt = "";
@@ -12,15 +15,33 @@
 		theme: "github-dark",
 		sanitizer: DOMPurify.sanitize,
 		disableIcons: true,
+		extensions: [
+			code({ theme: "github-dark" }),
+			{
+				components: [
+					{
+						component: SendButton,
+						parent: "input",
+						props: {
+							callback: runPrompt,
+						},
+					},
+				],
+			},
+		],
 	});
 
 	function handlePromptInput(e: KeyboardEvent) {
 		if (e.target && (e.target as Element).nodeName == "TEXTAREA") {
 			if (e.key == "Enter" && !e.shiftKey) {
 				e.preventDefault();
-				console.log("Prompt submitted:", currentPrompt)
+				runPrompt();
 			}
 		}
+	}
+
+	function runPrompt() {
+		console.log("Prompt submitted:", currentPrompt);
 	}
 </script>
 
