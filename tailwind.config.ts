@@ -18,7 +18,7 @@ const config: Config = {
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
 				ring: "hsl(var(--ring) / <alpha-value>)",
-				bacgkground: {
+				background: {
 					DEFAULT: "hsl(var(--background) / <alpha-value>)",
 					2: "hsl(var(--background-2) / <alpha-value>)",
 					3: "hsl(var(--background-3) / <alpha-value>)",
