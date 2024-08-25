@@ -1,0 +1,29 @@
+.carta-editor {
+	background-color: hsl(var(--background-2));
+	border-radius: var(--radius);
+
+    .carta-toolbar {
+		display: none !important;
+	}
+
+	.carta-wrapper {
+		padding: 1.5rem;
+	}
+
+	.carta-input,
+	.carta-renderer {
+		max-height: 6rem;
+		overflow: auto;
+	}
+
+	.carta-font-code {
+		font-family: "Space Mono", monospace;
+		caret-color: white;
+        font-size: 0.95rem;
+	}
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+	color: var(--shiki-dark) !important;
+}
