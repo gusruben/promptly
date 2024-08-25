@@ -1,6 +1,10 @@
 <script>
 	import Task from "$lib/components/Task.svelte";
 	import * as TaskList from "$lib/components/ui/tasklist";
+
+	let currentPrompt = "";
+
+	$: console.log(JSON.stringify(currentPrompt))
 </script>
 
 <div class="flex h-full w-full flex-row items-stretch p-6">
@@ -14,6 +18,17 @@
 				<Task status="bad" title="Task 3">Task 3 content</Task>
 				<Task status="working" title="Task 4">Task 4 content here, in progress</Task>
 			</TaskList.Root>
+		</div>
+
+		<div class="rounded-lg bg-background-2 p-6">
+			{#if !currentPrompt || currentPrompt == "\n"}
+				<div
+					class="pointer-events-none absolute select-none text-red-500"
+				>
+					Enter a prompt...
+				</div>
+			{/if}
+			<div contenteditable="true" class="min-h-[1em]" bind:innerText={currentPrompt}></div>
 		</div>
 	</div>
 </div>
