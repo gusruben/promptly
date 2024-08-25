@@ -1,4 +1,5 @@
 <script>
+	import Task from "$lib/components/Task.svelte";
 	import * as TaskList from "$lib/components/ui/tasklist";
 </script>
 
@@ -6,22 +7,12 @@
 	<div class="flex h-full flex-grow flex-col gap-6">
 		<div class="flex-grow rounded-lg bg-background-2">
 			<p class="p-5 text-lg font-bold">Tasks</p>
-			<!-- <div class="flex-col w-full border-t-2"></div> -->
+
 			<TaskList.Root class="border-t-2">
-				<TaskList.Item value="task-1" status="working">
-					<TaskList.Trigger status="working">
-						Task 1
-					</TaskList.Trigger>
-					<TaskList.Content>Task 1 content</TaskList.Content>
-				</TaskList.Item>
-			</TaskList.Root>
-            <TaskList.Root class="border-t-2">
-				<TaskList.Item value="task-1" status="good">
-					<TaskList.Trigger status="good">
-						Task 1
-					</TaskList.Trigger>
-					<TaskList.Content>Task 1 content</TaskList.Content>
-				</TaskList.Item>
+				<Task status="good" title="Task 1">Task 1 content</Task>
+				<Task status="good" title="Task 2">Task 2 content</Task>
+				<Task status="bad" title="Task 3">Task 3 content</Task>
+				<Task status="working" title="Task 4">Task 4 content here, in progress</Task>
 			</TaskList.Root>
 		</div>
 	</div>

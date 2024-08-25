@@ -12,9 +12,9 @@
 	export let status: $$Props["status"] = "working";
 
 	const styling = {
-		good: "from-[#24C95119] to-[#12632800] border-l-good",
-		bad: "from-[#D7363619] to-[#7C161600] border-l-bad",
-		working: "from-[#CDCDCD19] to-[#6A6A6A00] border-l-working",
+		good: "from-[#24C95119] to-[#12632800] border-l-good border-b-[#3F4741]",
+		bad: "from-[#D7363619] to-[#7C161600] border-l-bad border-b-[#423535]",
+		working: "from-[#CDCDCD19] to-[#6A6A6A00] border-l-working border-b-[#404349]",
 	}[status];
 </script>
 
