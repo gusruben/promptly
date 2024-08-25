@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import Task from "$lib/components/Task.svelte";
 	import * as TaskList from "$lib/components/ui/tasklist";
 	import { Carta, MarkdownEditor } from "carta-md";
-	import "@fontsource/space-mono"
+	import "@fontsource/space-mono";
 	import "$lib/styles/carta.scss";
 	import DOMPurify from "isomorphic-dompurify";
 
@@ -13,10 +13,20 @@
 		sanitizer: DOMPurify.sanitize,
 		disableIcons: true,
 	});
+
+	function handlePromptInput(e: KeyboardEvent) {
+		if (e.target && (e.target as Element).nodeName == "TEXTAREA") {
+			if (e.key == "Enter" && !e.shiftKey) {
+				e.preventDefault();
+				console.log("Prompt submitted:", currentPrompt)
+			}
+		}
+	}
 </script>
 
 <div class="flex h-full w-full flex-row items-stretch p-6">
-	<div class="flex h-full flex-grow flex-col gap-6">
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div class="flex h-full flex-grow flex-col gap-6" on:keydown={handlePromptInput}>
 		<div class="flex-grow rounded-lg bg-background-2">
 			<p class="p-5 text-lg font-bold">Tasks</p>
 
