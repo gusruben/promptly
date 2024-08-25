@@ -31,6 +31,7 @@
 		<MarkdownEditor
 			placeholder="Enter a prompt..."
 			mode="tabs"
+			disableToolbar={true}
 			{carta}
 			bind:value={currentPrompt}
 		/>
