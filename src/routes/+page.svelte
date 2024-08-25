@@ -23,12 +23,12 @@
 		<div class="rounded-lg bg-background-2 p-6">
 			{#if !currentPrompt || currentPrompt == "\n"}
 				<div
-					class="pointer-events-none absolute select-none text-red-500"
+					class="pointer-events-none absolute select-none text-[#FFFFFF50]"
 				>
 					Enter a prompt...
 				</div>
 			{/if}
-			<div contenteditable="true" class="min-h-[1em]" bind:innerText={currentPrompt}></div>
+			<div contenteditable="true" class="min-h-[1em] max-h-24 !outline-none overflow-y-scroll" bind:innerText={currentPrompt}></div>
 		</div>
 	</div>
 </div>
