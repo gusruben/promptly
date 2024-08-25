@@ -8,7 +8,7 @@
 			<p class="p-5 text-lg font-bold">Tasks</p>
 			<!-- <div class="flex-col w-full border-t-2"></div> -->
 			<TaskList.Root class="border-t-2">
-				<TaskList.Item value="task-1">
+				<TaskList.Item value="task-1" status="good">
 					<TaskList.Trigger>
                         Task 1
                     </TaskList.Trigger>
