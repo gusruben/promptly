@@ -20,6 +20,9 @@ importers:
       lucide-svelte:
         specifier: ^0.435.0
         version: 0.435.0(svelte@4.2.19)
+      mingcute_icon:
+        specifier: ^2.9.5
+        version: 2.9.5
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.5.2
@@ -806,6 +809,9 @@ packages:
   min-indent@1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
+
+  mingcute_icon@2.9.5:
+    resolution: {integrity: sha512-8tJ/XVRNrKDeQd2nY9MM+9MckgiVgGC3AEl2769Fs96HFiPOjkqjkwoj5clIrhEgNtyb8uJDNNbEqKbyhXue2w==}
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -1897,6 +1903,8 @@ snapshots:
       picomatch: 2.3.1
 
   min-indent@1.0.1: {}
+
+  mingcute_icon@2.9.5: {}
 
   minimatch@3.1.2:
     dependencies:

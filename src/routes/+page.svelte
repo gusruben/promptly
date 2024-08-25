@@ -10,8 +10,9 @@
 			<TaskList.Root class="border-t-2">
 				<TaskList.Item value="task-1" status="working">
 					<TaskList.Trigger>
-                        Task 1
-                    </TaskList.Trigger>
+						<span class="mgc_search_line bg-clip-text bg-red-500"></span>
+						Task 1
+					</TaskList.Trigger>
 					<TaskList.Content>Task 1 content</TaskList.Content>
 				</TaskList.Item>
 			</TaskList.Root>
