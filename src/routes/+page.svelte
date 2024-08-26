@@ -82,11 +82,11 @@
 
 <!-- TODO with trailer: make it an overlay on the entire page, and move the radial gradient position -->
  <!-- radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(255, 254, 241, 0.05), transparent 60% ) -->
-<svelte:body on:mousemove={updateMouseTrailer} />
+<!-- <svelte:body on:mousemove={updateMouseTrailer} />
 <div
 	bind:this={mouseTrailer}
 	class="fixed left-0 top-0 z-50 h-[32rem] w-[32rem] bg-[radial-gradient(circle_at_center,#E8EAEE10,#E8EAEE00_60%)]"
-/>
+/> -->
 
 <style lang="postcss">
 	:global(body),
