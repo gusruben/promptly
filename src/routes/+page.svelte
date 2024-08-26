@@ -6,19 +6,43 @@
 	import { code } from "@cartamd/plugin-code";
 	import "@cartamd/plugin-code/default.css";
 	import "@fontsource/space-mono";
+	import { invoke } from "@tauri-apps/api";
+	import { listen } from "@tauri-apps/api/event";
 	import { Carta, MarkdownEditor } from "carta-md";
 	import DOMPurify from "isomorphic-dompurify";
 	import { onMount } from "svelte";
 
-	// mouse trailer logic
-	let mouseTrailer: HTMLDivElement;
+	let currentPrompt = "";
+	let currentResponse = "";
+	let unlisten: Function;
 
-	function updateMouseTrailer(e: MouseEvent) {
-		mouseTrailer.style.left = (e.clientX - (mouseTrailer.offsetWidth / 2)) + "px";
-		mouseTrailer.style.top = (e.clientY - (mouseTrailer.offsetHeight / 2)) + "px";
+	async function submitPrompt() {
+		if (!currentPrompt.trim()) return;
+
+		unlisten = await listen("response", e => {
+			console.log(e.payload);
+			currentResponse += e.payload;
+		})
+
+		await invoke("prompt_claude", { prompt: currentPrompt })
+		console.log("Prompt submitted:", currentPrompt);
 	}
 
-	let currentPrompt = "";
+	onMount(() => {
+		listen("response-end", () => {
+			console.log("Claude response finished");
+			if (unlisten) unlisten();
+		})
+	})
+
+	function handlePromptInput(e: KeyboardEvent) {
+		if (e.target && (e.target as Element).nodeName == "TEXTAREA") {
+			if (e.key == "Enter" && !e.shiftKey) {
+				e.preventDefault();
+				submitPrompt();
+			}
+		}
+	}
 
 	const carta = new Carta({
 		theme: "github-dark",
@@ -32,7 +56,7 @@
 						component: SendButton,
 						parent: "input",
 						props: {
-							callback: runPrompt,
+							callback: submitPrompt,
 						},
 					},
 				],
@@ -40,20 +64,14 @@
 		],
 	});
 
-	function handlePromptInput(e: KeyboardEvent) {
-		if (e.target && (e.target as Element).nodeName == "TEXTAREA") {
-			if (e.key == "Enter" && !e.shiftKey) {
-				e.preventDefault();
-				runPrompt();
-			}
-		}
-	}
+	// mouse trailer logic
+	let mouseTrailer: HTMLDivElement;
 
-	function runPrompt() {
-		console.log("Prompt submitted:", currentPrompt);
+	function updateMouseTrailer(e: MouseEvent) {
+		mouseTrailer.style.left = e.clientX - mouseTrailer.offsetWidth / 2 + "px";
+		mouseTrailer.style.top = e.clientY - mouseTrailer.offsetHeight / 2 + "px";
 	}
 </script>
-
 
 <div class="flex h-full w-full flex-row items-stretch p-6">
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -79,9 +97,8 @@
 	</div>
 </div>
 
-
 <!-- TODO with trailer: make it an overlay on the entire page, and move the radial gradient position -->
- <!-- radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(255, 254, 241, 0.05), transparent 60% ) -->
+<!-- radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(255, 254, 241, 0.05), transparent 60% ) -->
 <!-- <svelte:body on:mousemove={updateMouseTrailer} />
 <div
 	bind:this={mouseTrailer}
