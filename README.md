@@ -33,6 +33,7 @@ If you want to support development of Promptly, you can:
 ## License
 
 Promptly is free and open-source software licensed under the GNU General Public License v3.0.
+See [LICENSE](https://github.com/gusruben/promptly/blob/main/LICENSE) for more information.
 
 
 <!-- links -->
