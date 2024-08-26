@@ -1,38 +1,14 @@
-# create-svelte
+<div align="center">
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+![Promptly](.github/header.png)
 
-## Creating a project
+<!-- for a divider line -->
+<h1 align="center"></h1>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<!-- shields -->
+[![][https://img.shields.io/github/contributors/gusruben/promptly?style=flat-square&labelColor=%23232529&color=%2326CB54]][https://github.com/gusruben/promptly/graphs/contributors]
+[![][https://img.shields.io/github/stars/gusruben/promptly?style=flat-square&labelColor=%23232529&color=%23F4EC61]][https://github.com/gusruben/promptly/stargazers]
+[![][https://img.shields.io/github/issues/gusruben/promptly?style=flat-square&labelColor=%23232529&color=%23D73636]][https://github.com/gusruben/promptly/issues]
+[![][https://img.shields.io/github/issues-pr/gusruben/promptly?style=flat-square&labelColor=%23232529&color=%233995FF]][https://github.com/gusruben/promptly/pulls]
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+</div>
