@@ -1,6 +1,6 @@
 <div align="center">
 
-![Promptly](.github/header.png)
+<img height="300" src="https://raw.githubusercontent.com/gusruben/promptly/main/.github/header.png">
 
 <!-- for a divider line -->
 <h1 align="center"></h1>
