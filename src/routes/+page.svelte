@@ -11,6 +11,8 @@
 	import { Carta, MarkdownEditor } from "carta-md";
 	import DOMPurify from "isomorphic-dompurify";
 	import { onMount } from "svelte";
+	import systemPrompt from "$lib/prompts/system.md?raw";
+	import breakDownPrompt from "$lib/prompts/tools/break_down.md?raw";
 
 	let currentPrompt = "";
 	let currentResponse = "";
@@ -18,22 +20,34 @@
 
 	async function submitPrompt() {
 		if (!currentPrompt.trim()) return;
+		console.log("Submitting prompt", currentPrompt)
 
 		unlisten = await listen("response", e => {
-			console.log(e.payload);
+			// console.log(e.payload)
 			currentResponse += e.payload;
-		})
+			document.body.outerHTML = currentResponse;
+		});
 
-		await invoke("prompt_claude", { prompt: currentPrompt })
-		console.log("Prompt submitted:", currentPrompt);
+		await invoke("prompt_claude", {
+			systemPrompt: systemPrompt
+				.replaceAll("{{depth}}", "1")
+				.replace("{{tools}}", breakDownPrompt),
+			prompt: currentPrompt,
+			tools: ["break_down"],
+		});
+		console.log(currentResponse)
 	}
 
 	onMount(() => {
 		listen("response-end", () => {
 			console.log("Claude response finished");
 			if (unlisten) unlisten();
+		});
+
+		listen("tool-break-down", e => {
+			console.log("Tool break down", e)
 		})
-	})
+	});
 
 	function handlePromptInput(e: KeyboardEvent) {
 		if (e.target && (e.target as Element).nodeName == "TEXTAREA") {
